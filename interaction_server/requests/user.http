@@ -1,0 +1,41 @@
+### GET (ADMIN)
+GET http://localhost:3000/api/v1/users
+
+### GET WITH FILTER (ADMIN) (searchTerm, role, status, limit, page)
+GET http://localhost:3000/api/v1/users?searchTerm=en&status=normal
+
+### GET BY ID (ADMIN or Authorized USER)
+GET http://localhost:3000/api/v1/users/670c9b7b0f3be7cd0ee0b313
+
+### INSERT (ADMIN)
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "test@gmail.com",
+  "password": "123456",
+  "phoneNumber": "0123456789",
+}
+
+### UPDATE (ADMIN or Authorized USER)
+PATCH http://localhost:3000/api/v1/users/671a5e8ab4c32bfba3967396
+Content-Type: application/json
+
+{
+  "email": "alligator75751@mailnuo.com",
+}
+
+### UPDATE AVATAR (ADMIN or Authorized USER)
+PATCH http://localhost:3000/api/v1/users/670c9b7b0f3be7cd0ee0b313/avatar
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="avatar.jpg"
+Content-Type: image/jpeg
+
+< ./images/default_avatar.png
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+### DELETE (ADMIN or Authorized USER)
+DELETE http://localhost:3000/api/v1/users/670c9b7b0f3be7cd0ee0b313

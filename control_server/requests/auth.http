@@ -1,0 +1,76 @@
+### LOGIN
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "emailOrPhone": "hoangduy12823@gmail.com",
+  "password": "123123"
+}
+
+### REGISTER
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "name": "Nguyễn Hoàng Duy",
+  "email": "copperhead87123326@mailnuo.com",
+  "phoneNumber": "0123456789",
+  "password": "123456",
+}
+
+### LOGOUT
+POST http://localhost:3000/api/v1/auth/logout
+
+### FORGOT PASSWORD
+84478e97-4aba-4f58-961a-bcf7019bfa6dPOST http://localhost:3000/api/v1/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "hoangduy12823@gmail.com"
+}
+
+### RESET PASSWORD
+POST http://localhost:3000/api/v1/auth/reset-password
+Content-Type: application/json
+
+{
+  "email": "hoangduy12823@gmail.com",
+  "password": "123123",
+  "otp": "315763"
+}
+
+### GOOGLE (NOTE: Use browser to open this link)
+# GET http://localhost:3000/api/v1/auth/google
+
+### VALIDATE QR CODE
+POST http://localhost:3000/api/v1/auth/fp
+Content-Type: application/json
+
+{
+  "fingerprint": "a7b329e6-fd51-40f8-9041-5a84b3915299"
+}
+
+### ACCEPT QR CODE
+POST http://localhost:3000/api/v1/auth/fp/accept
+Content-Type: application/json
+
+{
+  "fingerprint": "a7b329e6-fd51-40f8-9041-5a84b3915299"
+}
+
+
+### DECLINE QR CODE
+POST http://localhost:3000/api/v1/auth/fp/decline
+Content-Type: application/json
+
+{
+  "fingerprint": "0da2525f-6ff9-4de8-be4d-384660416949"
+}
+
+### LOGIN WITH TICKET
+POST http://localhost:3000/api/v1/auth/fp/ticket
+Content-Type: application/json
+
+{   
+  "ticket": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMz"
+}

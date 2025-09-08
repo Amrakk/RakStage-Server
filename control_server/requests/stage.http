@@ -1,0 +1,11 @@
+### CREATE STAGE
+POST http://localhost:3000/api/v1/stage
+Content-Type: application/json
+
+{
+    "title": "Stage 1"
+}
+
+### JOIN STAGE
+POST http://localhost:3000/api/v1/stage/orur-pgjm-tnjf
+Content-Type: application/json

@@ -1,0 +1,35 @@
+{
+    "name": "myapp",
+    "module": "src/index.ts",
+    "type": "module",
+    "scripts": {
+        "clean": "rimraf build",
+        "build": "bun run clean && tsc",
+        "build:node": "npm run clean && tsc",
+        "dev": "bun run --watch ./src/index.ts",
+        "start": "node --env-file=.env build/index.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.0",
+        "express-session": "^1.18.1",
+        "ioredis": "^5.4.1",
+        "jsonwebtoken": "^9.0.2",
+        "mongooat": "^2.2.18",
+        "multer": "^1.4.5-lts.1",
+        "socket.io": "^4.8.1"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/express-session": "^1.18.0",
+        "@types/jsonwebtoken": "^9.0.7",
+        "@types/multer": "^1.4.12",
+        "@types/node": "^22.7.4",
+        "rimraf": "^6.0.1"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
+}
