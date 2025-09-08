@@ -11,18 +11,25 @@ export const logout = ApiController.callbackFactory<{}, {}, {}>(async (req, res,
         req.logOut((err) => {
             if (err) throw err;
         });
+
         res.clearCookie("accToken", {
             secure: !isDev,
             httpOnly: true,
             sameSite: isDev ? "lax" : "none",
         });
+
+        const refToken = req.headers.cookie
+            ?.split("; ")
+            .find((c) => c.startsWith("refToken="))
+            ?.split("=")[1];
+        const signature = refToken?.split(".").pop();
+        if (signature) await deleteRefToken(user._id, signature);
+
         res.clearCookie("refToken", {
             secure: !isDev,
             httpOnly: true,
             sameSite: isDev ? "lax" : "none",
         });
-
-        await deleteRefToken(user._id);
 
         return res.status(200).json({ code: RESPONSE_CODE.SUCCESS, message: RESPONSE_MESSAGE.SUCCESS, data: {} });
     } catch (err) {

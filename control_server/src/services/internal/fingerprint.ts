@@ -1,16 +1,15 @@
+import UserService from "./user.js";
 import { randomUUID } from "crypto";
 import { serverId } from "../../core.js";
 import redis from "../../database/redis.js";
 import messageBroker from "../messageBroker/index.js";
 import { FINGERPRINT_ACTIONS, FINGERPRINT_EVENTS } from "../../constants.js";
 
+import NotFoundError from "../../errors/NotFoundError.js";
 import BadRequestError from "../../errors/BadRequestError.js";
-import ServiceResponseError from "../../errors/ServiceResponseError.js";
 
 import type { ObjectId } from "mongooat";
 import type { IUser, IUserSimplify } from "../../interfaces/database/user.js";
-import UserService from "./user.js";
-import NotFoundError from "../../errors/NotFoundError.js";
 
 type FingerprintCacheData = {
     location: string;

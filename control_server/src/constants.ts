@@ -22,10 +22,12 @@ export const IS_PROD = ENV === "production";
 // SOCKET
 export const WS_BROADCAST_CHANNEL = process.env.WS_BROADCAST_CHANNEL!;
 export const WS_MAX_RETRIES = parseInt(process.env.WS_MAX_RETRIES!);
-export const WS_MIN_TTL = ms(process.env.WS_MIN_TTL! as StringValue);
-export const WS_MAX_TTL = ms(process.env.WS_MAX_TTL! as StringValue);
 export const WS_TIMEOUT_INTERVAL = ms(process.env.WS_TIMEOUT_INTERVAL! as StringValue);
 export const WS_HEARTBEAT_INTERVAL = ms(process.env.WS_HEARTBEAT_INTERVAL! as StringValue);
+
+// FINGERPRINT
+export const FINGERPRINT_MIN_TTL = ms(process.env.FINGERPRINT_MIN_TTL! as StringValue);
+export const FINGERPRINT_MAX_TTL = ms(process.env.FINGERPRINT_MAX_TTL! as StringValue);
 
 // GMAIL
 export const EMAIL = process.env.EMAIL!;

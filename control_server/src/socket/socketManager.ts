@@ -1,11 +1,11 @@
 import {
-    WS_MAX_TTL,
-    WS_MIN_TTL,
     WS_CLOSE_CODE,
     WS_MAX_RETRIES,
     WS_CLOSE_REASON,
     WS_SEND_OPERATION,
     WS_TIMEOUT_INTERVAL,
+    FINGERPRINT_MAX_TTL,
+    FINGERPRINT_MIN_TTL,
     WS_RECEIVE_OPERATION,
     WS_HEARTBEAT_INTERVAL,
 } from "../constants.js";
@@ -24,7 +24,9 @@ export default class SocketManger {
         let timeoutId: NodeJS.Timeout;
         let retryCount = 0;
         let awaitingAck = false;
-        const WS_TTL = Math.floor(Math.random() * (WS_MAX_TTL - WS_MIN_TTL + 1) + WS_MIN_TTL);
+        const WS_TTL = Math.floor(
+            Math.random() * (FINGERPRINT_MAX_TTL - FINGERPRINT_MIN_TTL + 1) + FINGERPRINT_MIN_TTL
+        );
         const fingerprint = await FingerprintService.generateFingerprint(WS_TTL);
         SocketManger.socketCache.set(fingerprint, ws);
 

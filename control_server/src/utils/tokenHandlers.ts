@@ -69,9 +69,9 @@ export function verifyToken(token: string, secret = "") {
     }
 }
 
-export async function deleteRefToken(id: ObjectId) {
+export async function deleteRefToken(id: ObjectId, signature: string) {
     const cache = redis.getRedis();
-    await cache.del(`refToken-${id}`);
+    await cache.del(`refToken-${id}-${signature}`);
 
     return true;
 }
