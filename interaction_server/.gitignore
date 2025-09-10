@@ -179,6 +179,7 @@ build
 node_modules
 *temp
 
-.env
+.env*
+!.env.example
 package-lock.json
 requests/images

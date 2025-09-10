@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+ENV_FILE="$(dirname "$0")/../.env"
+ENV_BAK_FILE="$(dirname "$0")/../.env.bak"
+
+if [ -f "$ENV_BAK_FILE" ]; then
+	mv -f "$ENV_BAK_FILE" "$ENV_FILE"
+	echo ".env.bak restored to .env"
+else
+	echo "No .env.bak file found to restore."
+fi

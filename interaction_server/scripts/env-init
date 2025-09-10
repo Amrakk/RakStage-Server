@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+ENV_EXAMPLE="$(dirname "$0")/../.env.example"
+ENV_FILE="$(dirname "$0")/../.env"
+
+if [ -f "$ENV_FILE" ]; then
+    read -p ".env file already exists. Do you want to (b)ackup or (o)verwrite? [B/o]: " choice
+    case "$choice" in
+        o|O ) echo "Overwriting existing .env file.";;
+        * ) cp "$ENV_FILE" "${ENV_FILE}.bak"; echo "Backup created at ${ENV_FILE}.bak";;
+    esac
+    cp "$ENV_EXAMPLE" "$ENV_FILE"
+fi
+
+echo
+echo "==============================="
+echo "⚠️  Please manually open your .env file to fill in any additional environment variables as needed."
+echo "File path: $(cd "$(dirname "$ENV_FILE")" && pwd)/$(basename "$ENV_FILE")"
+echo "==============================="
